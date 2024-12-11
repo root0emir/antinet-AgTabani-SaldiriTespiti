@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiNETattack Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>antinet Kontrol Paneli</h1>
+        <nav>
+            <a href="/">Saldırı Takip</a>
+        </nav>
+    </header>
+    <main>
+        <section id="overview">
+            <h2>Durum Özeti</h2>
+            <p>Toplam Tespit Edilen Saldırı: <span id="total_attacks">0</span></p>
+            <p>Engellenen IP'ler: <span id="blocked_ips">0</span></p>
+        </section>
+
+        <section id="live-logs">
+            <h2>Canlı Loglar</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zaman</th>
+                        <th>Saldırı Türü</th>
+                        <th>IP Adresi</th>
+                        <th>MAC Adresi</th>
+                        <th>Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody id="log-table">
+                    <!-- Dinamik Loglar Buraya Eklenecek -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+  
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
