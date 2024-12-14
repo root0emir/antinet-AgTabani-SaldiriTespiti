@@ -15,12 +15,24 @@ blocked_macs = set()
 LOG_FILE = "attack_logs.json"
 
 
-# Anasayfa
+# Ana sayfa (Dashboard) route'u
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# Ayarlar sayfası
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
 
+# Kılavuz sayfası
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 # API: Logları Getir
 @app.route('/api/logs', methods=['GET'])
 def get_logs():

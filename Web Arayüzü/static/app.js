@@ -1,8 +1,7 @@
-
 console.log("Herşey yolunda gidiyor");
 
-
 document.addEventListener('DOMContentLoaded', function () {
+    // Logları gösterme
     const logTable = document.getElementById('log-table');
     const totalAttacks = document.getElementById('total_attacks');
     const blockedIps = document.getElementById('blocked_ips');
@@ -39,4 +38,70 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // İlk yükleme
     fetchLogs();
+
+    // Ayarlar formu
+    const settingsForm = document.getElementById('settings-form');
+    const blockedIpsList = document.getElementById('blocked-ips');
+    const blockedMacsList = document.getElementById('blocked-macs');
+
+    // IP ve MAC engelleme formunun işlevselliği
+    settingsForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const ipAddress = document.getElementById('ip-address').value;
+        const macAddress = document.getElementById('mac-address').value;
+
+        const data = {};
+
+        if (ipAddress) {
+            data.ip_address = ipAddress;
+        }
+
+        if (macAddress) {
+            data.mac_address = macAddress;
+        }
+
+        if (ipAddress || macAddress) {
+            fetch('/api/block', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                updateBlockedList();
+            })
+            .catch(error => console.error('Engelleme işlemi başarısız:', error));
+        }
+    });
+
+    // Engellenen IP ve MAC adreslerini listele
+    function updateBlockedList() {
+        fetch('/api/logs')
+            .then(response => response.json())
+            .then(data => {
+                // Engellenen IP'leri güncelle
+                blockedIpsList.innerHTML = '';
+                data.blocked_ips.forEach(ip => {
+                    const li = document.createElement('li');
+                    li.textContent = ip;
+                    blockedIpsList.appendChild(li);
+                });
+
+                // Engellenen MAC'leri güncelle
+                blockedMacsList.innerHTML = '';
+                data.blocked_macs.forEach(mac => {
+                    const li = document.createElement('li');
+                    li.textContent = mac;
+                    blockedMacsList.appendChild(li);
+                });
+            })
+            .catch(err => console.error('Engellenen adresler alınamadı:', err));
+    }
+
+    // Sayfa ilk yüklendiğinde engellenen listeleri güncelle
+    updateBlockedList();
 });

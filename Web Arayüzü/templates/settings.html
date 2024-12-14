@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiNETattack Ayarları</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>antinet Ayarlar</h1>
+        <nav>
+            <a href="/">Saldırı Takip</a>
+            <a href="/settings">Ayarlar</a>
+            <a href="/guide">Kılavuz</a>
+        </nav>
+    </header>
+    <main>
+        <section id="settings">
+            <h2>Genel Ayarlar</h2>
+            <form id="settings-form">
+                <label for="ip-address">Engellemek İçin IP Adresi:</label>
+                <input type="text" id="ip-address" name="ip-address" placeholder="IP adresi girin">
+                
+                <label for="mac-address">Engellemek İçin MAC Adresi:</label>
+                <input type="text" id="mac-address" name="mac-address" placeholder="MAC adresi girin">
+                
+                <button type="submit">Engelle</button>
+            </form>
+
+            <section id="blocked-list">
+                <h3>Engellenen IP ve MAC Adresleri</h3>
+                <ul id="blocked-ips">
+                    <!-- Engellenen IP'ler burada listelenecek -->
+                </ul>
+                <ul id="blocked-macs">
+                    <!-- Engellenen MAC adresleri burada listelenecek -->
+                </ul>
+            </section>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

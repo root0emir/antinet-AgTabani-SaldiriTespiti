@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AntiNETattack Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
     <header>
         <h1>antinet Kontrol Paneli</h1>
         <nav>
             <a href="/">Saldırı Takip</a>
+            <a href="/settings">Ayarlar</a>
+            <!-- Kılavuz bağlantısını ekledim -->
+            <a href="/guide">Kılavuz</a>
         </nav>
     </header>
     <main>
@@ -37,9 +39,8 @@
                     <!-- Dinamik Loglar Buraya Eklenecek -->
                 </tbody>
             </table>
-        </section>
     </main>
-  
+
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 

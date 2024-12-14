@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiNETattack Kılavuz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>antinet Kullanım Kılavuzu</h1>
+        <nav>
+            <a href="/">Saldırı Takip</a>
+            <a href="/settings">Ayarlar</a>
+            <a href="/guide">Kılavuz</a>
+        </nav>
+    </header>
+    <main>
+        <section id="guide">
+            <h2>Kılavuz</h2>
+            <p>antinet nasıl kullanılır?</p>
+            <ul>
+                <li><strong>Adım 1:</strong> Sistemi başlatın ve saldırı takibini aktif hale getirin.</li>
+                <li><strong>Adım 2:</strong> Canlı logları takip edin ve tespit edilen saldırıları gözden geçirin.</li>
+                <li><strong>Adım 3:</strong> Engellenen IP'leri kontrol ederek güvenlik önlemleri alın.</li>
+                <li><strong>Adım 4:</strong> Ayarlar menüsünden yapılandırma değişikliklerini yapın.</li>
+            </ul>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
